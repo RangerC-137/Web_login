@@ -1,4 +1,4 @@
-# web_login
+# my-project
 
 ## Project setup
 ```

@@ -4,7 +4,7 @@
         <div id="login">
             <el-card class="box-card">
                 <div id="form">
-                    <el-input v-model="users" placeholder="请输入用户名"></el-input>
+                    <el-input v-model="username" placeholder="请输入用户名"></el-input>
                     <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
                     <el-button type="primary" @click="login">登录</el-button>
                 </div>
@@ -95,7 +95,7 @@
 export default {
     data(){
         return{
-            users:"",
+            username:"",
             password:"",
             time:"",
             data:"",
