@@ -1,10 +1,50 @@
+<script setup>
+import {ref} from 'vue'
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+const user = ref('')
+const password = ref('')
+const host = 'https://db-api.amarea.cn'
+
+function login() {
+
+  const myHeaders = new Headers()
+  myHeaders.append("Content-Type", "application/json")
+  let requestOptions = { // 里面不能有body
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  }
+  fetch(`${host}/users/${user.value}`, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        if (data.id === user.value) {   // 验证是否存在该用户return data
+        } else {
+          throw new Error("用户名不存在")
+        }
+        if (data.password === password.value) {
+          router.push({
+            name: "home",
+            params: {
+              id: data.id,
+            }
+          })
+        } else {
+          throw new Error("密码错误")
+        }
+      })
+      .catch(err => alert(err))
+}
+</script>
+
 <template>
     <div id="background">
         <div id="logo">Mysystem</div>
         <div id="login">
             <el-card class="box-card">
                 <div id="form">
-                    <el-input v-model="username" placeholder="请输入用户名"></el-input>
+                    <el-input v-model="user" placeholder="请输入用户名"></el-input>
                     <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
                     <el-button type="primary" @click="login">登录</el-button>
                 </div>
@@ -94,35 +134,6 @@
 </style>
 
 <script>
-function login() {
-    console.log(1)
-    const myHeaders = new Headers()
-    myHeaders.append("Content-Type", "application/json")
-    let requestOptions = { // 里面不能有body
-    method: "GET",  
-    headers: myHeaders,
-    redirect: "follow",
-    }
-    fetch(`${host}/users/${user.value}`, requestOptions)
-    .then(response => response.json())
-    .then(data => {
-    if (data.id === id) {   // 验证是否存在该用户return data
-    } else {
-    throw new Error("用户名不存在")
-    }
-    if (data.password === password.value) {
-          router.push({
-            name: "Home",
-            params: {
-              id: data.id,
-            }
-          })
-        } else {
-          throw new Error("密码错误")
-        }
-    })
-    .catch(err => console.log(err))
-}
 export default {
     data(){
         return{
