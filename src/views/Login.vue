@@ -69,6 +69,9 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+.el-button{
+    margin-left: 120px;
+}
 #clock{
     color: aliceblue;
     position: absolute;
@@ -91,12 +94,38 @@
 </style>
 
 <script>
-
+function login() {
+    console.log(1)
+    const myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json")
+    let requestOptions = { // 里面不能有body
+    method: "GET",  
+    headers: myHeaders,
+    redirect: "follow",
+    }
+    fetch(`${host}/users/${user.value}`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+    if (data.id === id) {   // 验证是否存在该用户return data
+    } else {
+    throw new Error("用户名不存在")
+    }
+    if (data.password === password.value) {
+          router.push({
+            name: "Home",
+            params: {
+              id: data.id,
+            }
+          })
+        } else {
+          throw new Error("密码错误")
+        }
+    })
+    .catch(err => console.log(err))
+}
 export default {
     data(){
         return{
-            username:"",
-            password:"",
             time:"",
             data:"",
         }
@@ -136,33 +165,5 @@ export default {
     },
     
 }
-function login() {
-    console.log(1)
-    const myHeaders = new Headers()
-    myHeaders.append("Content-Type", "application/json")
-    let requestOptions = { // 里面不能有body
-    method: "GET",  
-    headers: myHeaders,
-    redirect: "follow",
-    }
-    fetch(`${host}/users/${user.value}`, requestOptions)
-    .then(response => response.json())
-    .then(data => {
-    if (data.id === id) {   // 验证是否存在该用户return data
-    } else {
-    throw new Error("用户名不存在")
-    }
-    if (data.password === password.value) {
-          router.push({
-            name: "Home",
-            params: {
-              id: data.id,
-            }
-          })
-        } else {
-          throw new Error("密码错误")
-        }
-    })
-    .catch(err => console.log(err))
-}
+
 </script>>
