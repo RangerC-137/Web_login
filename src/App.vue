@@ -3,8 +3,9 @@
 </script>
 
 <template>
-
-  <router-view/>
+  <head>
+<meta http-equiv="refresh" content="5;url='../views/Login.vue'"> 
+  </head>
 </template>
 
 
