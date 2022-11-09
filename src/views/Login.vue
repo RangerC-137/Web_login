@@ -4,20 +4,11 @@ import {useRouter} from "vue-router";
 
 const router = useRouter()
 const user = ref('')
-<<<<<<< HEAD
-const name = ref('')
-const password = ref('')
-const repeat = ref('')
-const host = 'https://db-api.amarea.cn'
-
-function login() {
-=======
 const password = ref('')
 const host = 'https://db-api.amarea.cn'
 
 function login() {
 
->>>>>>> 2cbb7ea97df27821ba173221c43333a5871e0a86
   const myHeaders = new Headers()
   myHeaders.append("Content-Type", "application/json")
   let requestOptions = { // 里面不能有body
@@ -45,64 +36,10 @@ function login() {
       })
       .catch(err => alert(err))
 }
-<<<<<<< HEAD
-
-function sign() {
-  const myHeaders = new Headers()
-  myHeaders.append("Content-Type", "application/json")
-  let requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    redirect: "follow",
-  }
-  requestOptions.body = JSON.stringify({
-    id: user.value,
-    name: name.value,
-    password: password.value,
-  });
-  if (repeat.value !== password.value) {
-    alert("两次输入的密码不一致，请检查")
-  } else {
-    fetch(`${host}/users`, requestOptions) // 这里的网址没有id
-        .then(response => response.json())
-        .then(data => alert(data.id+"，注册成功"))
-  }
-}
-
-=======
->>>>>>> 2cbb7ea97df27821ba173221c43333a5871e0a86
 </script>
 
 <template>
     <div id="background">
-<<<<<<< HEAD
-        <div id="logo">Ranger_system</div>
-        <div id="container">
-            <div id="login">
-                <el-card class="box-card" id="card_login">
-                    <div id="form">
-                        <el-input v-model="user" placeholder="请输入用户名"></el-input>
-                        <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
-                        <el-button type="primary" @click="login">登录</el-button>
-                        <el-button id="turn_l" type="primary" @click="handleFlip">点击注册</el-button>
-                        <p id="p_login">还没有账号？→</p>
-                    </div>
-                </el-card>
-            </div>
-            <div id="sign">
-                <el-card class="box-card" id="card_sign">
-                    <div id="form">
-                        <el-input v-model="user" placeholder="请输入用户名"></el-input>
-                        <el-input v-model="name" placeholder="请输入昵称"></el-input>
-                        <el-input type="password" placeholder="请输入密码" v-model="password" show-password></el-input>
-                        <el-input type="password" placeholder="请再次输入密码" v-model="repeat" show-password></el-input>
-                        <el-button type="primary" @click="sign">注册</el-button>
-                        <el-button id="turn_s" type="primary" @click="handleFlip">点击登录</el-button>
-                        <p id="p_sign">已有账号？→</p>
-                    </div>
-                </el-card>
-            </div>
-=======
         <div id="logo">Mysystem</div>
         <div id="login">
             <el-card class="box-card">
@@ -112,7 +49,6 @@ function sign() {
                     <el-button type="primary" @click="login">登录</el-button>
                 </div>
             </el-card>
->>>>>>> 2cbb7ea97df27821ba173221c43333a5871e0a86
         </div>
         <div id="clock">
             <div id="time">{{time}}</div>
@@ -157,50 +93,24 @@ function sign() {
     top: 15%;
     left: 15%;
 }
-#container{
-    transform-style: preserve-3d;
-    transition: all 0.5s;
-    transform-origin: 50% 50%;
+#login{
     position: absolute;
     top: 30%;
     left: 38%;
 }
-#login,
-#sign{
-    position: absolute;
+.el-card{
     width: 373px;
     height: 210px;
-    border-radius: 15px;
-    backface-visibility:hidden;
-    transform-origin: left bottom;
-}
-#login{
-    z-index: 1;
-}
-#sign{
-    transform: rotateY(180deg);
-}
-.el-card{
     background-color: rgba(255, 255,255, 0.4);
+    border-radius: 15px;
 }
 #form{
-    line-height: 40px;
+    line-height: 60px;
     padding-left: 15px;
     padding-right: 15px;
 }
 .el-button{
     margin-left: 120px;
-}
-#p_login,
-#p_sign{
-    display: inline;
-    float: left;
-}
-#turn_l{
-    margin-left: 110px;  
-}
-#turn_s{
-    margin-left: 125px;  
 }
 #clock{
     color: aliceblue;
@@ -223,17 +133,13 @@ function sign() {
 }
 </style>
 
-
 <script>
 export default {
-    name: "Mall",
-    components: {},
     data(){
         return{
             time:"",
             data:"",
-            flag: true
-        };
+        }
     },
     mounted(){
         this.$nextTick(()=>{
@@ -241,11 +147,6 @@ export default {
         })
     },
     methods:{
-        handleFlip() {
-            let container = document.getElementById('container')
-            container.style.transform = this.flag ? 'rotateY(180deg)':''
-            this.flag = !this.flag
-        },
         update_clock:function(e){
             var d=new Date();
             var year=d.getFullYear();
@@ -275,9 +176,5 @@ export default {
     },
     
 }
-<<<<<<< HEAD
-</script>>
-=======
 
 </script>>
->>>>>>> 2cbb7ea97df27821ba173221c43333a5871e0a86
