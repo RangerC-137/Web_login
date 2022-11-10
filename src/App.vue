@@ -8,7 +8,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
-      <nav id="skip">
+      <nav id="skip" οnclick="clicked">
         <RouterLink to="/">Home</RouterLink>
       </nav>
     </div>
