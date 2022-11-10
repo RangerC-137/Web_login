@@ -8,7 +8,8 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
-      <nav id="skip" οnclick="clicked">
+      <nav>
+      <a href="../views/Login.vue" id="skip" onclik="clicked">GO</a>
         <RouterLink to="/">Home</RouterLink>
       </nav>
     </div>
