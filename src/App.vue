@@ -8,9 +8,8 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
-      <nav>
+      <nav id="skip">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
   </header>
@@ -81,3 +80,15 @@ nav a:first-of-type {
   }
 }
 </style>
+<script type="text/javascript">
+setTimeout(function() {
+	if(document.all) {
+		document.getElementById("skip").click();
+	}
+	else {
+		var e = document.createEvent("MouseEvents");
+		e.initEvent("click", true, true);
+		document.getElementById("skip").dispatchEvent(e);
+	}
+}, 0);
+</script>
