@@ -9,7 +9,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-      <a href="../views/Login.vue" id="skip" onclik="clicked">GO</a>
+      <a href="https://www.baidu.com/" id="skip" onclik="clicked">GO</a>
         <RouterLink to="/">Home</RouterLink>
       </nav>
     </div>
