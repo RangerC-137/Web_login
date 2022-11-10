@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Login from './views/Login.vue'
 </script>
 
 <template>
@@ -9,8 +10,8 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-      <a href="https://www.baidu.com/" id="skip" onclik="clicked">GO</a>
-        <RouterLink to="/">Home</RouterLink>
+      <a href="https://www.baidu.com/">GO</a>
+        <RouterLink to="/"  id="skip" onclik="clicked">Home</RouterLink>
       </nav>
     </div>
   </header>
