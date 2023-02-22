@@ -26,8 +26,8 @@ function login() {
         }
         if (data.password === password.value) {
           router.push({
-            name: "KuangJia",
-            console.log('123'),
+            name: "home",
+            
             params: {
               id: data.id,
             }
